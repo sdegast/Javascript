@@ -1,0 +1,23 @@
+div {
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;
+    float: left;
+}
+
+div#blauw {
+    background-color: aqua;
+}
+
+div#groen {
+    background-color: darkgreen;
+    margin-top: 15px;
+}
+
+div#geel {
+    background-color: yellow;
+    margin-top: 40px;
+}
+div#rood {
+    background-color: red;
+}
