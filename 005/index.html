@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Copse&display=swap" rel="stylesheet">
+    <title>Choose yer cat</title>
+    <style>
+
+        body {
+            font-family: 'Copse', serif;
+            text-align: center;
+        }
+        div.picture-holder {
+            box-sizing: border-box;
+            height: 375px;
+            width: 225px;
+            float: left;
+            border: 1px solid black;
+        }
+        div.favoriet {
+            width: 225px;
+            height: 150px;
+        }
+        #pics {
+            width: 675px;
+            height: 1125px;
+            border: solid 1px black;
+            font-size: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cat Chooser</h1>
+    <h3>Choose yer favorite cat!</h3>
+    <div id="pics">
+
+    </div>
+    <script>
+        pics = document.getElementById("pics");
+        createPicsHolders();
+        createCatPictures();
+
+        function createPicsHolders() {
+            for(var i = 0; i < 9; i++) {
+                pictureHolder = document.createElement("div");
+                pictureHolder.className = "picture-holder";
+                pictureHolder.id = "picture-holder-" + i;
+                pics.appendChild(pictureHolder);
+            }
+        }
+        
+        function createCatPictures() {
+            pictureHolder = document.getElementsByClassName("picture-holder");
+            for(var i = 0; i < pictureHolder.length; i++) {
+                favoriet = document.createElement("div");
+                favoriet.className = "favoriet";
+                favoriet.id = "favoriet_" + (i + 1);
+                addCatPic = document.createElement("img");
+                addCatPic.src = "./resources/kat" + (i + 1) + ".jpg";
+                addCatPic.id = (i + 1);
+                addCatPic.addEventListener("click", function () {
+                    addFav(this.id);
+                });
+                pictureHolder[i].appendChild(favoriet);
+                pictureHolder[i].appendChild(addCatPic);
+            }
+        }
+
+        function addFav(id) {
+            unFav = document.getElementsByClassName("favoriet");
+
+            for(var i = 0; i < unFav.length; i++) {
+                unFav[i].style.backgroundImage = "none";
+            }
+
+            favoriet = document.getElementById("favoriet_" + id);
+            favoriet.style.backgroundImage = "url('./resources/heart.png')";
+        }
+    </script>
+</body>
+</html>
